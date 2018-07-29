@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 var mongoose = require('mongoose');
+var flash = require('connect-flash');
 var mongoDB = 'mongodb://kira:noidea123@ds257851.mlab.com:57851/fa_test';
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
@@ -27,6 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

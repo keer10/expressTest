@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
+const Joi = require('joi');
+const passport = require('passport');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('hey keer');
-});
+var user_controller = require('../controllers/userController');
+
+// register API
+router.post('/login',passport.authenticate('local'), user_controller.user_login);
+
+// login API
+router.post('/register',user_controller.user_register);
 
 module.exports = router;
