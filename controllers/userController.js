@@ -1,6 +1,5 @@
 var User = require('../models/user');
-
-var Joi = require('Joi');
+var Joi = require('joi');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
