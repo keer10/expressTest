@@ -47,8 +47,6 @@ exports.user_register = function(req, res) {
 passport.use(new LocalStrategy(
     function(username, password, done) {
      User.getUserByEmail(username, function(err, user){
-         console.log(err);
-         console.log(user);
         if(err) throw err;
         if(!user) {
            return done(null,false, {message : 'No user'});
@@ -72,7 +70,6 @@ passport.serializeUser(function(user, done) {
   
   passport.deserializeUser(function(id, done) {
     User.getUserById(id, function(err, user) {
-        console.log(user);
       done(err, user);
     });
   });
@@ -81,6 +78,5 @@ passport.serializeUser(function(user, done) {
 exports.user_login = function(req, res) {
   // If this function gets called, authentication was successful.
   // `req.user` contains the authenticated user.
-  console.log(req.user);
   res.send(req.user);
 };

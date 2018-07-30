@@ -5,6 +5,14 @@ const passport = require('passport');
 
 var user_controller = require('../controllers/userController');
 
+
+
+// default users
+
+router.get('/', function(req, res) {
+    res.send('NOT IMPLEMENTED: User detail: ');
+});
+
 // register API
 router.post('/login',passport.authenticate('local'), user_controller.user_login);
 
